@@ -1,9 +1,9 @@
 <!-- EXAMPLE CONFIG -->
 <!-- The real configuration is inline in the cloud-init.yaml -->
 <config>
-  <user value='gorzell'/>
-  <team value='236463'/>
-  <passkey value=''/>
+  <user value='texmandie'/>
+  <team value='236388'/>
+  <passkey value='****'/>
   <smp value='true'/>
   <gpu value='true'/>
   <power v='full'/>

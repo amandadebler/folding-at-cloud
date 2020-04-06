@@ -59,12 +59,28 @@ packages:
 write_files:
   - content: |
       <config>
-      <user value='gorzell'/>
-      <team value='236463'/>
-      <passkey value=''/>
+      <!-- Client Control -->
+      <fold-anon v='false'/>
+
+      <!-- Folding Slot Configuration -->
+      <gpu v='true'/>
       <smp value='true'/>
-      <gpu value='true'/>
-      <power value='full'/>
+
+      <!-- Slot Control -->
+      <power v='full'/>
+
+      <!-- User Information -->
+      <passkey v=''/>
+      <team v='236388'/>
+      <user v='texmandie'/>
+
+      <!-- Folding Slots -->
+      <slot id='0' type='CPU'>
+      <client-type v='beta'/>
+      </slot>
+      <slot id='1' type='GPU'>
+      <client-type v='beta'/>
+      </slot>
       </config>
     path: /etc/fahclient/config.xml
 

@@ -1,0 +1,47 @@
+#cloud-config
+
+apt:
+  preserve_sources_list: true
+
+  conf: | # APT config
+    APT {
+      Get {
+        Assume-Yes "true";
+        Fix-Broken "true";
+      };
+    };
+package_update: true
+package_upgrade: true
+
+packages:
+  - telnet
+  - curl
+  - wget
+
+write_files:
+  - content: |
+      <config>
+      <!-- Client Control -->
+      <fold-anon v='false'/>
+
+      <!-- Folding Slot Configuration -->
+      <gpu v='false'/>
+
+      <!-- Slot Control -->
+      <power v='full'/>
+
+      <!-- User Information -->
+      <passkey v='******'/>
+      <team v='236388'/>
+      <user v='texmandie'/>
+
+      <!-- Folding Slots -->
+      <slot id='0' type='CPU'>
+      <client-type v='beta'/>
+      </slot>
+      </config>
+    path: /etc/fahclient/config.xml
+runcmd:
+  - mkdir /run/folding
+  - [ wget, "https://download.foldingathome.org/releases/public/release/fahclient/debian-testing-64bit/v7.4/fahclient_7.4.4_amd64.deb", -O, /run/folding/fahclient_7.4.4_amd64.deb ]
+  - DEBIAN_FRONTEND=noninteractive apt-get install -y /run/folding/fahclient_7.4.4_amd64.deb
