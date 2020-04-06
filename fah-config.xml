@@ -3,7 +3,7 @@
 <config>
   <user value='texmandie'/>
   <team value='236388'/>
-  <passkey value='****'/>
+  <passkey value=''/>
   <smp value='true'/>
   <gpu value='true'/>
   <power v='full'/>

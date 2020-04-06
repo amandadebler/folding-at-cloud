@@ -31,7 +31,7 @@ write_files:
       <power v='full'/>
 
       <!-- User Information -->
-      <passkey v='******'/>
+      <passkey v=''/>
       <team v='236388'/>
       <user v='texmandie'/>
 

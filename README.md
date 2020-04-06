@@ -4,6 +4,7 @@ PowerShell/AzureCLI scripts to setup a Folding@Home GPU instance in Azure - from
 
 
 ## Prerequisites
+1. (Not mandatory, but your points per day will be very disappointing if you don't) A [passkey](https://apps.foldingathome.org/getpasskey) from Folding@Home registered to the username and email you plan to use
 1. An [Azure account](https://azure.microsoft.com/en-us/free/).
 1. Install the [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest).
 1. Login your Azure account [via the CLI](https://docs.microsoft.com/en-us/cli/azure/authenticate-azure-cli?view=azure-cli-latest).
@@ -14,10 +15,13 @@ PowerShell/AzureCLI scripts to setup a Folding@Home GPU instance in Azure - from
 1. Check the current spot prices for GPU-enabled machines - try changing regions to see where the current cheapest ones are.
 1. Consider the price difference between the NV6 (nvidia M60 - approx 500k PPD) and the more common NC6 (nvidia K80 - approx 330k PPD).
 1. Run `start-fahazurevm.ps1` with any switches you want - default max hourly price is $0.15 (times 730 hours = $109.50/mo), you might be willing to spend more.
-1. Wait about 5-10 minutes for all the packages to be installed
-1. Check the logs: `ssh <public_dns> tail -f /var/lib/fahclient/log.txt` or run direct commands by ssh'ing into the machine and accessing the F@H commandline client with telnet localhost 36330.
+1. Wait about 5-10 minutes for all the packages to be installed - `ssh <public_dns> tail -f /var/log/cloud-init-output.log` until you see someting like `Cloud-init v. 19.4-33-gbb4131a2-0ubuntu1~18.04.1 finished at Mon, 06 Apr 2020 20:18:39 +0000. Datasource DataSourceAzure [seed=/var/lib/waagent].  Up 15.44 seconds`
+1. Check the Folding@Home logs: `ssh <public_dns> tail -f /var/lib/fahclient/log.txt` or run direct commands by ssh'ing into the machine and accessing the F@H commandline client with telnet localhost 36330.
 
 ## Economics of folding on Azure GPU-enabled VMs
+
+[Pricing - Linux Virtual Machines on Azure](https://azure.microsoft.com/en-us/pricing/details/virtual-machines/linux/)
+
 The current pay-as-you-go cost for the Standard_NC6 VM was $0.90-$1.20/hr for the US and large European regions that this VM type is available for, while the Standard_NV6 was $1.15-$1.50. The Promo versions of these machines is somewhat lower ($0.60-$0.80), but still way more expensive than buying and running an RTX 2060 and a cheap PC, even at German residental electric rates (approx 0.30 EUR/kWh).
 
 The spot instances, on the other hand, were available for as little $0.1189/hr (NC6) and $0.1228/hr (NV6), but those prices varied widely. The cheapest NC6 spot price was in northcentralus, while the NV6 was cheaper in southcentralus than the NC6 in that region and the NV6 in northcentralus.

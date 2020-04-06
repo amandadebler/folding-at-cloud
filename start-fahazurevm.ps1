@@ -1,26 +1,12 @@
-#!/bin/sh
 
-#/ Usage: start.sh [-g -h -n -r]
-#/
-#/ Start a GPU VM in Azure that will automatically process work for Folding@HOME
-#/ https://foldingathome.org/
-#/ https://github.com/gorzell/folding-at-azure
-#/
-#/ OPTIONS:
-#/   -h | --help    Show this message.
-#/   -g | --resource-group Azure resource group name. DEFAULT: foldingathome
-#/   -n | --name      Name for the VM. DEFAULT: folding
-#/   -p | --public    Attach a public IP with port 22 open. DEFAULT: false
-#/   -r | --region    Azure region. DEFAULT: northcentralus
-#/
 
 Param(
 $RESOURCE_GROUP="foldingathome",
-$LOCATION="northcentralus",
+$LOCATION="southcentralus",
 $USER=$env:USERNAME,
 $NAME="folding",
-$MAX_PRICE=0.15, # $0.15 USD/hour, or $109.50/mo.; current spot price was $0.1189 on 5 April 2020
-$VM_SIZE="Standard_NC6", # single K80 GPU with 6 CPU cores and 56 GB RAM; NV6 has 1 M60 GPU (DAT PPD)
+$MAX_PRICE=0.15, # $0.15 USD/hour, or $109.50/mo.; current spot price was $0.1228 on 6 April 2020
+$VM_SIZE="Standard_NV6" # single M60 GPU with 6 CPU cores and 56 GB RAM that gets around 500k points per days; NC6 has 1 K80 GPU and gets around 330k points per day
 )
 
 $NAME = $NAME.toLower()
