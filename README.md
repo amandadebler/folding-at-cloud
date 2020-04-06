@@ -16,7 +16,7 @@ PowerShell/AzureCLI scripts to setup a Folding@Home GPU instance in Azure - from
 1. Consider the price difference between the NV6 (nvidia M60 - approx 500k PPD) and the more common NC6 (nvidia K80 - approx 330k PPD).
 1. Run `start-fahazurevm.ps1` with any switches you want - default max hourly price is $0.15 (times 730 hours = $109.50/mo), you might be willing to spend more.
 1. Wait about 5-10 minutes for all the packages to be installed - `ssh <public_dns> tail -f /var/log/cloud-init-output.log` until you see someting like `Cloud-init v. 19.4-33-gbb4131a2-0ubuntu1~18.04.1 finished at Mon, 06 Apr 2020 20:18:39 +0000. Datasource DataSourceAzure [seed=/var/lib/waagent].  Up 15.44 seconds`
-1. Check the Folding@Home logs: `ssh <public_dns> tail -f /var/lib/fahclient/log.txt` or run direct commands by ssh'ing into the machine and accessing the F@H commandline client with telnet localhost 36330.
+1. Check the Folding@Home logs: `ssh <public_dns> tail -f /var/lib/fahclient/log.txt` or run direct commands by ssh'ing into the machine and accessing the F@H commandline client with `telnet localhost 36330` and typing `help` to see your options.
 
 ## Economics of folding on Azure GPU-enabled VMs
 
@@ -38,7 +38,7 @@ The cpu-cloud-init.yaml is what I use for non-GPU VMs - Hetzner seems to have th
 
 **User:** This can be any unique identifier that you want to use to track your work contribution. [Read more about users](https://foldingathome.org/support/faq/stats-teams-usernames/).
 
-**Team:** The team that you want to associate your work with. The existing identifier is for the `github` team. [Read more about teams](https://foldingathome.org/support/faq/stats-teams-usernames/).
+**Team:** The team that you want to associate your work with. The existing identifier is for the `SQLFamily` team. [Read more about teams](https://foldingathome.org/support/faq/stats-teams-usernames/).
 
 **Passkey:** A unique identifier that ties your contributions directly to you (not just those with your username). [Read more about passkeys](https://foldingathome.org/support/faq/points/passkey/).
 
