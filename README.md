@@ -42,4 +42,4 @@ The cpu-cloud-init.yaml is what I use for non-GPU VMs - Hetzner seems to have th
 
 **Passkey:** A unique identifier that ties your contributions directly to you (not just those with your username). [Read more about passkeys](https://foldingathome.org/support/faq/points/passkey/).
 
-**Client-Type: beta** I have this in here because there are almost always beta work units available, and they carry just as many points as regular ones, and you're probably not too worried about crashing this VM. Remove this whole tag if you are, though.
+
